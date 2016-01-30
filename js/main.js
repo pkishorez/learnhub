@@ -46,7 +46,21 @@ var courses = {
 			$(".image", ncourse).attr("src", json.image);
 			$(".contents .title", ncourse).html(json.title);
 			$(".contents .description", ncourse).html(json.description);
-
+			
+			var rating = parseFloat(json.rating.trim());
+			$(".contents .rating", ncourse).html("");
+			for (var z=0; z<5; z++){
+				if (rating>0){
+					if (rating==0.5)
+						$(".contents .rating", ncourse).append("<i class='fa fa-star-half'></i>");
+					else
+						$(".contents .rating", ncourse).append("<i class='fa fa-star'></i>");
+					rating--;
+				}
+				else{
+					$(".contents .rating", ncourse).append("<i class='fa fa-star-o'></i>");
+				}
+			}
 			var price = json.price;
 			if (price.search("INR /month")){
 				price = price.replace("INR /month", "");

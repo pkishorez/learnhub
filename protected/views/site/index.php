@@ -69,9 +69,15 @@ These templates are themselves not useful, but are used by javascript on demand
 			<div class="description"></div>
 			<div style="margin-top : 20px;">
 				<div class="category"></div>
-				<div class="cost">
-					<i class="fa fa-rupee"></i> <span class="value"></span>
+				<div style="float: right">
+					<div class="cost wordwrap">
+						<i class="fa fa-rupee"></i> <span class="value"></span>
+					</div>
+					<div class="rating wordwrap" style="color:green;">
+						<i class="fa fa-star"></i>
+					</div>
 				</div>
+				<div style="clear:both;"></div>
 			</div>
 		</div>
 		<div class="cell info">
