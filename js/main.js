@@ -45,7 +45,8 @@ var courses = {
 			//$(ncourse).addClass(json.type.toLowerCase().trim());
 			$(ncourse).attr("href", json.url);
 			$(".image", ncourse).attr("src", json.image);
-			$(".contents .title", ncourse).html(json.title.replace(courses.string, "<span style='color:orange;font-size : 20px;'>"+courses.string+"</span>"));
+			var regex = new RegExp(courses.string, "gi");
+			$(".contents .title", ncourse).html(json.title.replace(regex, "<span style='color:orange;font-size : 20px;'>"+courses.string+"</span>"));
 			$(".contents .description", ncourse).html(json.description);
 			
 			var rating = parseFloat(json.rating.trim());
@@ -111,8 +112,7 @@ var courses = {
 	 */
 	search: function()
 	{
-		if ($("#searchbytext").val().trim().length==0)
-			return;
+		courses.loading();
 		courses.string = $("#searchbytext").val().trim();
 		courses.post(base_path+"/courses/filter?ajax=true", {
 			"types" : courses.types,
