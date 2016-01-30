@@ -1,0 +1,106 @@
+/* 
+	Created on : Jan 30, 2016, 3:52:44 PM
+	Author     : Kishore
+*/
+
+@import "partials/_reset.scss";
+@import "partials/_custom.scss";
+@import "partials/_table.scss";
+@import "partials/_course.scss";
+
+$max-width : 1024px;
+$head_height : 50px;
+
+body{
+	background-color : #f9f9f9;
+	.head{
+		height : $head_height;
+		background-color : #00993c;
+		margin : auto;
+		.header{
+			display : table;
+			height : 100%;
+			max-width : $max-width;
+			width : 100%;
+			margin : auto;
+			.content::first-letter{
+					font-size : 25px !important;
+			}
+			.content{
+				display : table-cell;
+				vertical-align : middle;
+				padding : 10px;
+				color : white;
+				text-transform: uppercase;
+				padding: 0px 10px !important;
+				font-size : 15px;
+				font-weight : 900;
+				box-sizing : border-box;
+			}	
+		}
+	}
+	.body{
+		margin : auto;
+		max-width: $max-width;
+		width:100%;
+		box-sizing: border-box;
+		display : table;
+		
+		/*Filters pane in Learn HUB.*/
+		.leftpane{
+			display : table-cell;
+			min-width : 220px;
+			vertical-align : top;
+			.content{
+				padding : 10px;
+				background-color : white;
+				margin-right : 10px;
+			}
+		}
+		.rightpane{
+			vertical-align : top;
+			width : 100%;
+			display : table-cell;
+			.content{
+				padding : 10px;
+				background-color : white;
+				margin-bottom : 10px;
+				width : 100%;
+				box-sizing : border-box;
+				
+				.sort{
+					margin-right : 10px;
+					padding : 5px 10px;
+					cursor : pointer;
+					&.highlight, &:hover{
+						background-color : #029718;
+						color : white;
+					}
+				}
+			}
+		}
+	}
+}
+
+.filters{
+	.categories, .types{
+		.title{
+			i{
+				font-size : 18px;
+			}
+			font-size : 18px;
+			margin-bottom : 5px;
+		}
+		.list{
+			label{
+				&:hover{
+					background-color : #f1f1f1;
+				}
+				input{
+					padding : 5px;
+				}
+				display : block;
+			}
+		}
+	}
+}

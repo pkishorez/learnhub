@@ -1,0 +1,81 @@
+/* 
+	Created on : Jan 30, 2016, 8:16:28 PM
+	Author     : Kishore
+*/
+
+#courses
+{
+	.course{
+		border : 1px solid #eaeaea;;
+		border-left : 3px solid #02cc13;
+		margin-bottom : 5px;
+		background-color : white;
+		box-sizing: border-box;
+		width : 100%;
+		padding : 10px;
+		
+		&.intermediate{
+			border-left : 3px solid green;
+			.type{
+				color : green !important;
+			}
+		}
+		&.beginner{
+			border-left : 3px solid orange;
+			.type{
+				color : orange !important;
+			}
+		}
+		&.advanced{
+			border-left : 3px solid red;
+			.type{
+				color : red !important;
+			}
+		}
+		
+		&:hover{
+			background-color : #ececec;
+			opacity : 0.9;
+		}
+		img{
+			padding : 5px 10px 0px 10px;
+			max-width : 200px;
+		}
+		.contents{
+			position : relative;
+			width : 100%;
+			padding : 5px 10px 10px 0px;
+			.title{
+				font-size : 19px;
+				font-weight : 900;
+				padding-bottom : 5px;
+				width : 100%;
+			}
+			.type{
+				font-size : 15px;
+				font-weight : 900;
+				color : green;
+				text-transform: capitalize;
+			}
+			.description{
+				text-align: justify;
+			}
+			.category{
+				padding : 5px;
+				background-color : #b8c3ff;
+				border : 1px solid #001cb9;
+				float : left;
+			}
+			.cost{
+				i{
+					font-size : 17px;
+				}
+				font-size : 17px;
+				margin-bottom : 10px;
+				float : right;
+				font-weight : 900;
+			}
+		}
+		
+	}
+}

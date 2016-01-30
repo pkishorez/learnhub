@@ -1,0 +1,23 @@
+/* 
+	Created on : Jan 30, 2016, 5:30:55 PM
+	Author     : Kishore
+*/
+
+.table{
+	display : table;
+	width : 100%;
+
+	.cell{
+		display : table-cell;
+		vertical-align : top;// default
+		&.top{
+			vertical-align : top;
+		}
+		&.middle{
+			vertical-align : middle;
+		}
+		&.bottom{
+			vertical-align : bottom;
+		}
+	}
+}
