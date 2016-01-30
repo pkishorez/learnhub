@@ -52,7 +52,12 @@ class Controller extends CController
 				$category_query .= " or category='$value'";
 			}
 		}
-		return "where ($type_query) and ($category_query)";
+		$search_query = "true";
+		if (isset($_POST["search"]) && is_string($_POST["search"])){
+			$string = mysql_escape_string($_POST["search"]);
+			$search_query = " title like '%$string%'";
+		}
+		return "where ($type_query) and ($category_query) and ($search_query)";
 	}
 
 	/**

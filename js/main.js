@@ -21,6 +21,7 @@ var courses = {
 	types : [],
 	order : "",
 	orderby: "",
+	string : "",
 	
 	/**
 	 * Render the course list in right pane of courses from the json array.
@@ -44,7 +45,7 @@ var courses = {
 			//$(ncourse).addClass(json.type.toLowerCase().trim());
 			$(ncourse).attr("href", json.url);
 			$(".image", ncourse).attr("src", json.image);
-			$(".contents .title", ncourse).html(json.title);
+			$(".contents .title", ncourse).html(json.title.replace(courses.string, "<span style='color:orange;font-size : 20px;'>"+courses.string+"</span>"));
 			$(".contents .description", ncourse).html(json.description);
 			
 			var rating = parseFloat(json.rating.trim());
@@ -110,7 +111,18 @@ var courses = {
 	 */
 	search: function()
 	{
-		
+		if ($("#searchbytext").val().trim().length==0)
+			return;
+		courses.string = $("#searchbytext").val().trim();
+		courses.post(base_path+"/courses/filter?ajax=true", {
+			"types" : courses.types,
+			"categories" : courses.categories,
+			"order" : courses.order,
+			"orderby" : courses.orderby,
+			"search" : courses.string
+		}, function(data){
+			courses.render(data);
+		});
 	},
 	
 	/**
@@ -128,7 +140,8 @@ var courses = {
 			"types" : courses.types,
 			"categories" : courses.categories,
 			"order" : order,
-			"orderby" : orderby
+			"orderby" : orderby,
+			"search" : courses.string
 		}, function(data){
 			courses.render(data);
 		});
@@ -157,7 +170,8 @@ var courses = {
 			"types" : types,
 			"categories" : categories,
 			"order" : courses.order,
-			"orderby" : courses.orderby
+			"orderby" : courses.orderby,
+			"search" : courses.string
 		}, function(data){
 			courses.render(data);
 		});
@@ -175,6 +189,15 @@ $(document).ready(function(){
 		courses.filter();
 	});
 	
+	var timeout = null;
+	$("#searchbytext").on("keydown",function(){
+		if (timeout!=null){
+			clearTimeout(timeout);
+		}
+		setTimeout(function(){
+			courses.search();
+		}, 1000);
+	});
 	$(".rightpane .sort").data("sort", "none");
 	$(".rightpane .sort").click(function(){
 		$(".rightpane .sort i").attr("class", "fa fa-sort-numeric-asc");

@@ -37,6 +37,7 @@
 	controls related to sort.-->
 <div class="rightpane">
 	<div class="content table">
+		<input type='text' id='searchbytext' placeholder="Search" style="margin-right : 10px;"/>
 		<div id="searchstats" class="cell middle" style="width : 100%;">Search results</div>
 		<span class="wordwrap middle cell" style="font-weight: 900;padding-right: 10px;">Sort By : </span>
 		<a href="#" class="cell wordwrap sort asc" data-order="price">price <i class="fa fa-sort-numeric-asc"></i></a>
